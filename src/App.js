@@ -24,8 +24,17 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <div>
+      <table>
+        <thead>
+          <tr className="">
+            <th>Profile</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>DOB</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
             {employees.map(({
               id: { value },
               name: { first, last },
@@ -34,17 +43,17 @@ function App() {
               dob: { date },
               email,
             }) => { return <>
-              <ol key= {value}>
-                <li>{first} {last}</li>
-                <li>{phone}</li>
-                <li><img src={thumbnail} alt="Employee Thumbnail"></img></li>
-                <li>{date}</li>
-                <li>{email}</li>
-              </ol>
+              <tr key= {value}>
+                <td><img src={thumbnail} alt="Employee Thumbnail"></img></td>
+                <td>{first} {last}</td>
+                <td>{phone}</td>
+                <td>{date}</td>
+                <td>{email}</td>
+              </tr>
             </>
             })}
-        </div>
-      </header>
+        </tbody>
+      </table>
     </div>
   );
 }
