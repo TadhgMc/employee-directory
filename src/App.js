@@ -4,7 +4,9 @@ import React, { useState, useEffect } from 'react';
 
 function App() {
 
+  const columnNames = ["Profile","Name","Phone","DOB","Email"];
   const [employees, setEmployees] = useState([]);
+  const [sortedEmployees, setSortedEmployees] = useState([]);
   
   useEffect(() => {
     getUsers()
@@ -21,17 +23,32 @@ function App() {
     
   }, [])
 
+  const handleSort = (name) => {
+    if (name === 'Name') {
+      const sortedemployees = employees.sort(function (a, b) {
+          var nameA = a.name.first;
+          var nameB = b.name.first;
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          return 0;
+      });
+      setSortedEmployees({ sortedEmployees: sortedemployees });
+    } else {
+      console.log("Sorry, I can't sort by that yet!");
+    }
+  }
 
   return (
     <div className="App">
       <table>
         <thead>
+          
           <tr className="">
-            <th>Profile</th>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>DOB</th>
-            <th>Email</th>
+            {columnNames.map((name) => <th key={name} onClick={() => handleSort(name)} >{name}</th>)}
           </tr>
         </thead>
         <tbody>
