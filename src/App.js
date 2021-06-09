@@ -43,12 +43,15 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <table>
+    <div className="App container">
+      <nav className="row">
+        <h1 className="col text-decoration-underline">Employee Directory</h1>
+        <h3 className="text-decoration-underline">Click on Name to sort Employees by name into alphabetical order!</h3>
+      </nav>
+      <table className="">
         <thead>
-          
           <tr className="">
-            {columnNames.map((name) => <th key={name} onClick={() => handleSort(name)} >{name}</th>)}
+            {columnNames.map((name) => <th key={name} className="text-decoration-underline" onClick={() => handleSort(name)} >{name}</th>)}
           </tr>
         </thead>
         <tbody>
